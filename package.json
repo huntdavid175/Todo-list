@@ -1,0 +1,24 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "develop": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntdavid175/Todo-list.git"
+  },
+  "author": "huntdavid175",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huntdavid175/Todo-list/issues"
+  },
+  "homepage": "https://github.com/huntdavid175/Todo-list#readme",
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
+}
