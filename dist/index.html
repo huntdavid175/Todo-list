@@ -42,14 +42,14 @@
                 >Projects</a
               >
               <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li>
-                  <a href="#">Page 1</a>
+                <li class="project-item">
+                  <a href="#">Page 1 <span class="project-options" style="position: absolute; right: 30px; font-size: 15px; visibility: hidden; "><ion-icon name="ellipsis-horizontal-outline"></ion-icon></span></a>
+                </li>
+                <li class="project-item">
+                  <a href="#">Page 2 <span class="project-options" style="position: absolute; right: 30px; font-size: 15px; visibility: hidden; "><ion-icon name="ellipsis-horizontal-outline"></ion-icon></span></a>
                 </li>
                 <li>
-                  <a href="#">Page 2</a>
-                </li>
-                <li>
-                  <a href="#" id="add-project"> + Add Project</a>
+                  <a href="#" id="add-project" data-toggle="modal" data-target="#staticBackdrop"> + Add Project</a>
                 </li>
               </ul>
             </li>
@@ -103,11 +103,47 @@
                     <a  href="#" class="list-group-item list-group-item-action list-item"><input class="form-check-input position-static" type="checkbox" style="margin-left:15px; margin-right:10px;">Nodejs <span class="options" style="position: absolute; right: 20px; visibility: hidden;"> <ion-icon name="create-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></span></a>
                     <a href="#" class="list-group-item list-group-item-action list-item"><input class="form-check-input position-static" type="checkbox" style="margin-left:15px; margin-right:10px">Reactjs <span class="options" style="position: absolute; right: 20px; visibility: hidden;"> <ion-icon name="create-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></span></a>
                     <a href="#" class="list-group-item list-group-item-action list-item"><input class="form-check-input position-static" type="checkbox" style="margin-left:15px; margin-right:10px">Ruby on Rails <span class="options" style="position: absolute; right: 20px; visibility: hidden;"> <ion-icon name="create-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></span></a>
-                    <a href="#" class="list-group-item list-group-item-action list-item"><span  style="margin-left:15px; margin-right:10px">+</span>Add Task </a>
+                    <a href="#" class="list-group-item list-group-item-action"><span  style="margin-left:15px; margin-right:10px">+</span>Add Task </a>
 
                 </div>
             </div>
         </div>
+
+
+        <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add project</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Project name</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Project color</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <!-- <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option> -->
+                  </select>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
         <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="main.js"></script>
