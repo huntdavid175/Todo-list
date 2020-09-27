@@ -2,7 +2,7 @@ const todoItems = document.querySelectorAll(".list-item");
 const todoSpans = document.querySelectorAll('.options');
 const projectItems = document.querySelectorAll(".project-item")
 const projectSpans = document.querySelectorAll('.project-options');
-const colorSelector = document.querySelector('#exampleFormControlSelect1');
+const colorSelector = document.querySelector('#color-selector');
 
 
 todoItems.forEach((item) => {
