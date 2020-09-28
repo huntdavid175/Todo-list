@@ -3,6 +3,8 @@ const todoSpans = document.querySelectorAll('.options');
 const projectItems = document.querySelectorAll(".project-item")
 const projectSpans = document.querySelectorAll('.project-options');
 const colorSelector = document.querySelector('#color-selector');
+const ul = document.getElementById('pageSubmenu');
+
 
 
 todoItems.forEach((item) => {
@@ -19,23 +21,34 @@ todoItems.forEach((item) => {
     item.addEventListener('mouseleave', function() {
         clearAllItems(todoSpans)
     })
-})
+});
 
-projectItems.forEach((item) => {
-    item.addEventListener('mouseover', function(e) {
-        if(e.target.tagName == "A"){
-            clearAllItems(projectSpans)
-            e.target.children[0].style.visibility = "visible"
-        }
-        // console.log(e.target)
-    })
-})
-
-projectItems.forEach((item) => {
-    item.addEventListener("mouseleave", () => {
+ul.addEventListener('mouseover', (e) => {
+    if (e.target.parentNode.classList.contains("project-item")) {
         clearAllItems(projectSpans)
-    })
+            e.target.children[0].style.visibility = "visible"
+    }
 })
+
+ul.addEventListener('mouseleave', (e) => {
+    clearAllItems(projectSpans)
+})
+
+// projectItems.forEach((item) => {
+//     item.addEventListener('mouseover', function(e) {
+//         if(e.target.tagName == "A"){
+//             clearAllItems(projectSpans)
+//             e.target.children[0].style.visibility = "visible"
+//         }
+//         // console.log(e.target)
+//     })
+// })
+
+// projectItems.forEach((item) => {
+//     item.addEventListener("mouseleave", () => {
+//         clearAllItems(projectSpans)
+//     })
+// })
 
 
 // function to clear options icons after hover 
@@ -61,3 +74,7 @@ colors.forEach((color) => {
 function pickColorCode(color) {
     return colorCodes[color]
 }
+
+
+
+

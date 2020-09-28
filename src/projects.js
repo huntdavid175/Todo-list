@@ -8,6 +8,7 @@ class Project {
     addTodos(todoItem) {
         this.todos.push(todoItem)
     }
+
 }
 
 export{Project}
