@@ -1,7 +1,6 @@
 const todoItems = document.querySelectorAll(".list-item");
 const todoSpans = document.querySelectorAll('.options');
 const projectItems = document.querySelectorAll(".project-item")
-const projectSpans = document.querySelectorAll('.project-options');
 const colorSelector = document.querySelector('#color-selector');
 const ul = document.getElementById('pageSubmenu');
 
@@ -25,30 +24,18 @@ todoItems.forEach((item) => {
 
 ul.addEventListener('mouseover', (e) => {
     if (e.target.parentNode.classList.contains("project-item")) {
+        const projectSpans = document.querySelectorAll('.project-options');
+
         clearAllItems(projectSpans)
             e.target.children[0].style.visibility = "visible"
     }
 })
 
 ul.addEventListener('mouseleave', (e) => {
-    clearAllItems(projectSpans)
+    const projectSpans = document.querySelectorAll('.project-options');
+    clearAllItems(projectSpans);
 })
 
-// projectItems.forEach((item) => {
-//     item.addEventListener('mouseover', function(e) {
-//         if(e.target.tagName == "A"){
-//             clearAllItems(projectSpans)
-//             e.target.children[0].style.visibility = "visible"
-//         }
-//         // console.log(e.target)
-//     })
-// })
-
-// projectItems.forEach((item) => {
-//     item.addEventListener("mouseleave", () => {
-//         clearAllItems(projectSpans)
-//     })
-// })
 
 
 // function to clear options icons after hover 

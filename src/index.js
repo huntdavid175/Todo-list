@@ -23,16 +23,19 @@ addBtn.addEventListener('click', function() {
  
      // Add project to Storage 
      const project = new Project(projectValues.projectName, projectValues.projectColor);
-     
      Storage.addItem(project)
     }
     
 });
 
+// Load projects when page loads 
+window.addEventListener('load', () => {
+    const projects = JSON.parse(localStorage.getItem('projects'));
+    UI.displayProjects(projects)
+})
 
-let projects = JSON.parse(localStorage.getItem('projects'));
 
-UI.displayProjects(projects)
+
 
 
 
