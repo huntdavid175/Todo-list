@@ -8,6 +8,8 @@ import {Storage} from './storage';
 
 
 const addBtn = document.getElementById('add-project-btn');
+const projectHolder = document.querySelector('#pageSubmenu');
+
 
 
 // Set up a new project 
@@ -26,18 +28,30 @@ addBtn.addEventListener('click', function() {
      Storage.addItem(project)
 
     //  Add project to UI 
-    UI.addProjectToList(project)
+    UI.addProjectToList(project);
+    UI.addDetailsToUI(project);
     }
+
+    
     
 });
 
-const projects = JSON.parse(localStorage.getItem('projects'));
+projectHolder.addEventListener('click', (e) => {
+    if(e.target.tagName == "A") {
+        const id = parseInt(e.target.id);
+        const projects = JSON.parse(localStorage.getItem('projects'));
+
+        UI.displayProjectDetails(projects, id)
+    }
+})
+
+// const projects = JSON.parse(localStorage.getItem('projects'));
 // const todo = new Todo('Scuba diving')
 // let project1 =  projects[0];
 // Project.addTodos.call(project1, todo)
 // console.log(project1)
 
-UI.displayProjectDetails(projects,0)
+// UI.displayProjectDetails(projects,0)
 
 // Load projects when page loads 
 window.addEventListener('load', () => {

@@ -13,15 +13,15 @@ class UI {
     }
 
     static displayProjects(projects) {
-        projects.forEach((project) => UI.addProjectToList(project))
+        projects.forEach((project, index) => UI.addProjectToList(project, index))
     }
 
-    static addProjectToList(project) {
+    static addProjectToList(project,index) {
         const projectList = document.getElementById('pageSubmenu');
         const addBeforeThis = document.getElementById('add-project').parentElement;
         const li = document.createElement('li');
             li.classList.add("project-item")
-            li.innerHTML = `<a href="#">${project.projectName} <span class="project-options" style="position: absolute; right: 30px; font-size: 15px; visibility: hidden; "><ion-icon name="ellipsis-horizontal-outline"></ion-icon></span></a>
+            li.innerHTML = `<a href="#" id='${index}'>${project.projectName} <span class="project-options" style="position: absolute; right: 30px; font-size: 15px; visibility: hidden; "><ion-icon name="ellipsis-horizontal-outline"></ion-icon></span></a>
             `
             projectList.insertBefore(li, addBeforeThis)
     }
@@ -36,12 +36,12 @@ class UI {
     }
 
     static addDetailsToUI(project) {
-        const content = document.getElementById('content');
-        const row = document.querySelector(".row")
-        const h4 = document.createElement('h4');
-        h4.classList.add('mb-4');
-        h4.textContent = project.projectName;
-        content.insertBefore(h4, row)
+        const projectTitleLabel = document.getElementById('project-title');
+        const h2 = document.createElement('h2');
+        h2.classList.add('mb-4');
+        h2.textContent = project.projectName;
+        projectTitleLabel.innerHTML = ""
+        projectTitleLabel.appendChild(h2)
         this.displayProjectTodos(project) 
     }
 
@@ -54,7 +54,7 @@ class UI {
             listTag.classList.add("list-group-item", "list-group-item-action", "list-item");
             listTag.innerHTML = `<input class="form-check-input position-static" type="checkbox" style="margin-left:15px; margin-right:10px;">${todo} <span class="options" style="position: absolute; right: 20px; visibility: hidden;"> <ion-icon name="create-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></span>`
             listItems.insertBefore(listTag, todoLabel)
-        })
+        });
     }
 }
 
