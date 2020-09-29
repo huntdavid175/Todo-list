@@ -24,9 +24,20 @@ addBtn.addEventListener('click', function() {
      // Add project to Storage 
      const project = new Project(projectValues.projectName, projectValues.projectColor);
      Storage.addItem(project)
+
+    //  Add project to UI 
+    UI.addProjectToList(project)
     }
     
 });
+
+const projects = JSON.parse(localStorage.getItem('projects'));
+// const todo = new Todo('Scuba diving')
+// let project1 =  projects[0];
+// Project.addTodos.call(project1, todo)
+// console.log(project1)
+
+UI.displayProjectDetails(projects,0)
 
 // Load projects when page loads 
 window.addEventListener('load', () => {

@@ -5,7 +5,7 @@ class Project {
         this.todos = []
     }
 
-    addTodos(todoItem) {
+    static addTodos(todoItem) {
         this.todos.push(todoItem)
     }
 
