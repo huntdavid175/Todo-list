@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/huntdavid175/Todo-list#readme",
   "devDependencies": {
+    "vanillajs-datepicker": "^1.0.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },

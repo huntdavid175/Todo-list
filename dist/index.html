@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Todo List</title>
     <link rel="stylesheet" href="style.css" type="text/css" />
+    <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
   </head>
   <body>
     <div class="wrapper d-flex align-items-stretch">
@@ -101,7 +103,7 @@
                     <a href="#" class="list-group-item list-group-item-action list-item"><input class="form-check-input position-static" type="checkbox" style="margin-left:15px; margin-right:10px">Reactjs <span class="options" style="position: absolute; right: 20px; visibility: hidden;"> <ion-icon name="create-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></span></a>
                     <a href="#" class="list-group-item list-group-item-action list-item"><input class="form-check-input position-static" type="checkbox" style="margin-left:15px; margin-right:10px">Ruby on Rails <span class="options" style="position: absolute; right: 20px; visibility: hidden;"> <ion-icon name="create-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></span></a>
                     <a href="#" class="list-group-item list-group-item-action"><span  style="margin-left:15px; margin-right:10px">+</span>Add Task </a> -->
-                    <a href="#" id="add-todo" class="list-group-item list-group-item-action list-item"><ion-icon name="add" style="margin-left:15px; margin-right:10px"></ion-icon> Add task</a>
+                    <a href="#" id="add-todo" class="list-group-item list-group-item-action list-item" data-toggle="modal" data-target="#addTaskModal"><ion-icon name="add" style="margin-left:15px; margin-right:10px"></ion-icon> Add task</a>
 
                 </div> 
             </div>
@@ -144,7 +146,53 @@
     </div>
   </div>
 
-        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <!--Add Task Modal -->
+<div class="modal fade" id="addTaskModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Task name</label>
+                <input type="name" class="form-control" id="task-name">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Task Description</label>
+                <textarea class="form-control" id="task-description" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Due date</label>
+                <input type="date" class="form-control" id="due-date">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Priority</label>
+                <select class="form-control" id="priority">
+                  <option>High</option>
+                  <option>Medium</option>
+                  <option>Low</option>
+                  <!-- <option>4</option>
+                  <option>5</option> -->
+                </select>
+              </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="add-task-btn">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+        <!-- <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script> -->
     <script src="main.js"></script>
     <script src="../src/util.js"></script>
   </body>

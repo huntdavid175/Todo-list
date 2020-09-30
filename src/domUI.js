@@ -1,3 +1,6 @@
+import Storage from './storage';
+import Projects, { Project } from './projects'
+
 class UI {
     static getNewProjectValues() {
         const projectName = document.getElementById('project-name').value;
@@ -6,6 +9,18 @@ class UI {
         return {
             projectName, projectColor
         }
+    }
+
+    static getNewTodoValues() {
+        const title = document.getElementById('task-name').value;
+        const description = document.getElementById('task-description').value;
+        const dueDate = document.getElementById('due-date').value;
+        const priority = document.getElementById('priority').value;
+
+        return {
+            title, description, dueDate, priority
+        }
+
     }
 
     static clearInputFields() {
@@ -55,6 +70,15 @@ class UI {
             listTag.innerHTML = `<input class="form-check-input position-static" type="checkbox" style="margin-left:15px; margin-right:10px;">${todo} <span class="options" style="position: absolute; right: 20px; visibility: hidden;"> <ion-icon name="create-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></span>`
             listItems.insertBefore(listTag, todoLabel)
         });
+    }
+
+    static addTaskToProject(id, projects, newTodo, addTodoFunc) {
+        projects.forEach((project, index) => {
+            if(id == index) {
+                Project.addTodos.call(project,newTodo)
+                console.log(project)
+            }
+        })
     }
 }
 
