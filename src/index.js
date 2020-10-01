@@ -8,6 +8,8 @@ import { Storage } from "./storage";
 
 const addBtn = document.getElementById("add-project-btn");
 const projectHolder = document.querySelector("#pageSubmenu");
+let toEdit;
+
 
 // Set up a new project
 addBtn.addEventListener("click", function () {
@@ -27,12 +29,16 @@ addBtn.addEventListener("click", function () {
     Storage.addItem(project);
 
     //  Add project to UI
-    UI.addProjectToList(project);
+    const projects = Storage.getItem('projects')
+  UI.displayProjects(projects);
     UI.addDetailsToUI(project);
+
+    // set project to edit so you can edit upon new project added 
+    const currentProject = Storage.getItem().length - 1
+    toEdit = currentProject;
   }
 });
 
-let toEdit;
 
 projectHolder.addEventListener("click", (e) => {
   if (e.target.tagName == "A") {
@@ -52,21 +58,25 @@ addTaskBtn.addEventListener('click', () => {
     // const addTodoFunc = Project.addTodos.call;
     const todoValues = UI.getNewTodoValues();
     const todo = new Todo(todoValues.title, todoValues.description, todoValues.dueDate, todoValues.priority);
+
+
+    projects.forEach((project, index) => {
+      if(toEdit == index) {
+          Project.addTodos.call(project,todo)
+          console.log(project);
+          console.log(projects)
+          Storage.updateStorage(projects)
+          UI.displayProjectTodos(project);
+          UI.displayProjects(projects)
+          console.log(toEdit)
+      }
+  })
     // console.log(addTodoFunc)
 
-    UI.addTaskToProject(toEdit, projects,todo);
+    // UI.addTaskToProject(toEdit, projects,todo);
 
 })
 
-
-
-// const projects = JSON.parse(localStorage.getItem('projects'));
-// const todo = new Todo('Scuba diving')
-// let project1 =  projects[0];
-// Project.addTodos.call(project1, todo)
-// console.log(project1)
-
-// UI.displayProjectDetails(projects,0)
 
 // Load projects when page loads
 window.addEventListener("load", () => {

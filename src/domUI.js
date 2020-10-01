@@ -28,17 +28,19 @@ class UI {
     }
 
     static displayProjects(projects) {
+        const projectList = document.getElementById('project-lists');
+        projectList.innerHTML = ""
         projects.forEach((project, index) => UI.addProjectToList(project, index))
     }
 
     static addProjectToList(project,index) {
-        const projectList = document.getElementById('pageSubmenu');
-        const addBeforeThis = document.getElementById('add-project').parentElement;
+        const projectList = document.getElementById('project-lists');
+        // const addBeforeThis = document.getElementById('add-project').parentElement;
         const li = document.createElement('li');
-            li.classList.add("project-item")
+            li.classList.add("project-item");
             li.innerHTML = `<a href="#" id='${index}'>${project.projectName} <span class="project-options" style="position: absolute; right: 30px; font-size: 15px; visibility: hidden; "><ion-icon name="ellipsis-horizontal-outline"></ion-icon></span></a>
             `
-            projectList.insertBefore(li, addBeforeThis)
+            projectList.appendChild(li)
     }
 
     static displayProjectDetails(projects, id) {
@@ -63,23 +65,17 @@ class UI {
     static displayProjectTodos(project) {
         const listItems = document.querySelector('.list-group');
         const todoLabel = document.getElementById('add-todo');
+        listItems.innerHTML = "";
         const todos = project.todos;
         todos.forEach((todo, index) => {
             const  listTag = document.createElement('a');
             listTag.classList.add("list-group-item", "list-group-item-action", "list-item");
-            listTag.innerHTML = `<input class="form-check-input position-static" type="checkbox" style="margin-left:15px; margin-right:10px;">${todo} <span class="options" style="position: absolute; right: 20px; visibility: hidden;"> <ion-icon name="create-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></span>`
-            listItems.insertBefore(listTag, todoLabel)
+            listTag.innerHTML = `<input class="form-check-input position-static" type="checkbox" style="margin-left:15px; margin-right:10px;">${todo.title} <span class="options" style="position: absolute; right: 20px; visibility: hidden;"> <ion-icon name="create-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></span>`
+            // listItems.insertBefore(listTag, todoLabel)
+            listItems.appendChild(listTag)
         });
     }
 
-    static addTaskToProject(id, projects, newTodo, addTodoFunc) {
-        projects.forEach((project, index) => {
-            if(id == index) {
-                Project.addTodos.call(project,newTodo)
-                console.log(project)
-            }
-        })
-    }
 }
 
 export {UI}
