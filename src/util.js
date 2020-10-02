@@ -1,26 +1,40 @@
-const todoItems = document.querySelectorAll(".list-item");
-const todoSpans = document.querySelectorAll('.options');
+const todoItems = document.querySelectorAll(".todo-item");
 const projectItems = document.querySelectorAll(".project-item")
 const colorSelector = document.querySelector('#color-selector');
 const ul = document.getElementById('pageSubmenu');
+const todoDiv = document.querySelector('.list-group');
 
 
 
-todoItems.forEach((item) => {
-    item.addEventListener('mouseover', function(e) {
-        if(e.target.tagName == "A") {
-            clearAllItems(todoSpans)
-            e.target.children[1].style.visibility = "visible"
-        }
-       
-    })
+todoDiv.addEventListener('mouseover', (e) => {
+    if (e.target.classList.contains('todo-item')) {
+        const todoSpans = document.querySelectorAll('.options');
+                     clearAllItems(todoSpans);
+                     e.target.children[1].style.visibility = 'visible'
+
+    }
 })
 
-todoItems.forEach((item) => {
-    item.addEventListener('mouseleave', function() {
-        clearAllItems(todoSpans)
-    })
-});
+todoDiv.addEventListener('mouseleave', (e) => {
+    const todoSpans = document.querySelectorAll('.options');
+    clearAllItems(todoSpans);
+})
+
+// todoItems.forEach((item) => {
+//     item.addEventListener('mouseover', function(e) {
+//         if(e.target.tagName == "A") {
+//             clearAllItems(todoSpans)
+//             e.target.children[1].style.visibility = "visible"
+//         }
+       
+//     })
+// })
+
+// todoItems.forEach((item) => {
+//     item.addEventListener('mouseleave', function() {
+//         clearAllItems(todoSpans)
+//     })
+// });
 
 ul.addEventListener('mouseover', (e) => {
     if (e.target.parentNode.classList.contains("project-item")) {
@@ -44,6 +58,14 @@ function clearAllItems(items) {
         item.style.visibility = "hidden"
     })
 }
+
+const listGroup = document.querySelector('.list-group');
+listGroup.addEventListener('click', (e) => {
+    if(e.target.tagName == 'A') {
+        e.target.setAttribute('data-target', '#showTaskModal');
+        e.target.setAttribute('data-toggle', 'modal');  
+    }
+})
 
 
 const colors = ['red','blue','black','green'];

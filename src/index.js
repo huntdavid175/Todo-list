@@ -1,6 +1,7 @@
 // import '../dist/style.css';
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import jquery from 'jquery'
 import { Todo } from "./todos";
 import { Project } from "./projects";
 import { UI } from "./domUI";
@@ -9,6 +10,7 @@ import { Storage } from "./storage";
 const addBtn = document.getElementById("add-project-btn");
 const projectHolder = document.querySelector("#pageSubmenu");
 let toEdit;
+let highlightedProject;
 
 
 // Set up a new project
@@ -48,6 +50,8 @@ projectHolder.addEventListener("click", (e) => {
     UI.displayProjectDetails(projects, id);
     toEdit = id;
     console.log(id)
+    setHighlightedProject(id, projects);
+    // UI.displayTodoDetails(highlightedProject)
   }
 });
 
@@ -71,11 +75,33 @@ addTaskBtn.addEventListener('click', () => {
           console.log(toEdit)
       }
   })
-    // console.log(addTodoFunc)
-
-    // UI.addTaskToProject(toEdit, projects,todo);
 
 })
+
+
+const todoTaskElementParent = document.querySelector('.list-group');
+todoTaskElementParent.addEventListener('click', (e) => {
+  if(e.target.tagName == 'A') {
+    const id = parseInt(e.target.id);
+    UI.displayTodoDetails(highlightedProject, id)
+  }
+})
+
+
+
+function setHighlightedProject(id, projects) {
+  projects.forEach((project, index) => {
+    if(id == index) {
+      highlightedProject = project;
+      console.log(highlightedProject)
+    }
+  })
+} 
+
+
+
+
+
 
 
 // Load projects when page loads
